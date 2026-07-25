@@ -4,10 +4,10 @@ namespace App\Http\Controllers\SchoolClass;
 
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class CreateController extends Controller
 {
     public function __invoke()
     {
-        return "Menampilkan daftar kelas";
+        return "Menampilkan halaman tambah kelas";
     }
 }
