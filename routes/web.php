@@ -19,9 +19,7 @@ Route::get('/', function () {
 });
 
 
-// ==========================
-// Teacher
-// ==========================
+
 Route::prefix('teachers')->name('teachers.')->group(function () {
 
     Route::get('/', [TeacherController::class, 'index'])->name('index');
@@ -40,9 +38,7 @@ Route::prefix('teachers')->name('teachers.')->group(function () {
 });
 
 
-// ==========================
-// Student
-// ==========================
+
 Route::prefix('students')->name('students.')->group(function () {
 
     Route::get('/', [StudentController::class, 'index'])->name('index');
@@ -61,9 +57,7 @@ Route::prefix('students')->name('students.')->group(function () {
 });
 
 
-// ==========================
-// SchoolClass (Invokable)
-// ==========================
+
 Route::prefix('classes')->name('classes.')->group(function () {
 
     Route::get('/', IndexController::class)->name('index');
@@ -82,7 +76,5 @@ Route::prefix('classes')->name('classes.')->group(function () {
 });
 
 
-// ==========================
-// Major (Resource)
-// ==========================
+
 Route::resource('majors', MajorController::class);
