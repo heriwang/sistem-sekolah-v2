@@ -47,7 +47,7 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        $title = 'Sistem Sekolah - Tambah Siswa';
+        $title = 'Sistem Sekolah - Detail Siswa';
         return view('students.show', [
             'title' => $title
         ]);
@@ -55,7 +55,7 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $title = 'Sistem Sekolah - Tambah Siswa';
+        $title = 'Sistem Sekolah - Edit Siswa';
         return view('students.edit', [
             'title' => $title
         ]);
