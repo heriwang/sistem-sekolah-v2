@@ -28,13 +28,13 @@ Route::prefix('teachers')->name('teachers.')->group(function () {
 
     Route::post('/', [TeacherController::class, 'store'])->name('store');
 
-    Route::get('/{id}', [TeacherController::class, 'show'])->name('show');
+    Route::get('/{teacher}', [TeacherController::class, 'show'])->name('show');
 
-    Route::get('/{id}/edit', [TeacherController::class, 'edit'])->name('edit');
+    Route::get('/{teacher}/edit', [TeacherController::class, 'edit'])->name('edit');
 
-    Route::put('/{id}', [TeacherController::class, 'update'])->name('update');
+    Route::put('/{teacher}', [TeacherController::class, 'update'])->name('update');
 
-    Route::delete('/{id}', [TeacherController::class, 'destroy'])->name('destroy');
+    Route::delete('/{teacher}', [TeacherController::class, 'destroy'])->name('destroy');
 });
 
 
@@ -47,13 +47,13 @@ Route::prefix('students')->name('students.')->group(function () {
 
     Route::post('/', [StudentController::class, 'store'])->name('store');
 
-    Route::get('/{id}', [StudentController::class, 'show'])->name('show');
+    Route::get('/{student}', [StudentController::class, 'show'])->name('show');
 
-    Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
+    Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit');
 
-    Route::put('/{id}', [StudentController::class, 'update'])->name('update');
+    Route::put('/{student}', [StudentController::class, 'update'])->name('update');
 
-    Route::delete('/{id}', [StudentController::class, 'destroy'])->name('destroy');
+    Route::delete('/{student}', [StudentController::class, 'destroy'])->name('destroy');
 });
 
 
