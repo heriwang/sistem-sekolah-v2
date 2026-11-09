@@ -12,6 +12,12 @@
             <a href="{{ route('classes.index') }}" class="text-white/55 hover:text-white">Kelas</a>
             <a href="{{ route('majors.index') }}" class="text-white/55 hover:text-white">Jurusan</a>
         </nav>
+
+        <form action="{{ route('logout') }}" method="POST" class="hidden md:block">
+            @csrf
+            <button type="submit" class="rounded bg-[#A16207] px-3.5 py-2 text-sm font-semibold text-white hover:bg-[#92400E]">Logout</button>
+        </form>
+        
     </div>
     <div class="h-0.5 bg-[#A16207]"></div>
 </header>

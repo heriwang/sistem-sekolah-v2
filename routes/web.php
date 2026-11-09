@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TeacherController;
@@ -18,9 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication
+Route::get('/login', [AuthController::class, 'loginView'])->name('login-view')->middleware('guest');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post')->middleware('guest');
+Route::get('/register', [AuthController::class, 'registerView'])->name('register-view')->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post')->middleware('guest');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-Route::prefix('teachers')->name('teachers.')->group(function () {
+Route::prefix('teachers')->middleware('role:teacher','auth')->name('teachers.')->group(function () {
 
     Route::get('/', [TeacherController::class, 'index'])->name('index');
 
@@ -39,7 +46,7 @@ Route::prefix('teachers')->name('teachers.')->group(function () {
 
 
 
-Route::prefix('students')->name('students.')->group(function () {
+Route::prefix('students')->name('students.')->middleware(['role:student,teacher', 'auth'])->group(function () {
 
     Route::get('/', [StudentController::class, 'index'])->name('index');
 
@@ -57,8 +64,7 @@ Route::prefix('students')->name('students.')->group(function () {
 });
 
 
-
-Route::prefix('classes')->name('classes.')->group(function () {
+Route::prefix('classes')->middleware('role:teacher','auth')->name('classes.')->group(function () {
 
     Route::get('/', IndexController::class)->name('index');
 
@@ -77,4 +83,4 @@ Route::prefix('classes')->name('classes.')->group(function () {
 
 
 
-Route::resource('majors', MajorController::class);
+Route::resource('majors', MajorController::class)->middleware('role:teacher','auth');
